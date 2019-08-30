@@ -75,7 +75,7 @@
 	export default {
 		data() {
 			return {
-				sysName:'VUEADMIN',
+				sysName:'小小小毛毛',
 				collapsed:false,
 				sysUserName: '',
 				sysUserAvatar: '',

@@ -1,8 +1,10 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { LoginUsers, Users } from './data/user';
-let _Users = Users;
+import taskList from './data/tasks';
 
+let _Users = Users;
+let _taskList = taskList;
 export default {
   /**
    * mock bootstrap
@@ -39,7 +41,7 @@ export default {
           } else {
             resolve([200, { code: 500, msg: '账号或密码错误' }]);
           }
-        }, 1000);
+        }, 100);
       });
     });
 
@@ -55,7 +57,7 @@ export default {
           resolve([200, {
             users: mockUsers
           }]);
-        }, 1000);
+        }, 100);
       });
     });
 
@@ -74,7 +76,7 @@ export default {
             total: total,
             users: mockUsers
           }]);
-        }, 1000);
+        }, 100);
       });
     });
 
@@ -88,7 +90,7 @@ export default {
             code: 200,
             msg: '删除成功'
           }]);
-        }, 500);
+        }, 50);
       });
     });
 
@@ -103,7 +105,7 @@ export default {
             code: 200,
             msg: '删除成功'
           }]);
-        }, 500);
+        }, 50);
       });
     });
 
@@ -126,7 +128,7 @@ export default {
             code: 200,
             msg: '编辑成功'
           }]);
-        }, 500);
+        }, 50);
       });
     });
 
@@ -146,9 +148,30 @@ export default {
             code: 200,
             msg: '新增成功'
           }]);
-        }, 500);
+        }, 50);
       });
     });
 
+//分割--------------------------------------------------------------------------------------------
+//获取任务列表 tasks/getTaskLists
+ //新增用户
+  
+  mock.onGet('/tasks/getTaskLists').reply(config => {
+      let { name, addr, age, birth, sex } = config.params;
+      
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve([200, {
+            code: 200,
+            msg: '新增成功'
+          }]);
+        }, 50);
+      });
+    });
+
+
+
+
   }
 };
+
